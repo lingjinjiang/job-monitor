@@ -2,6 +2,7 @@ package spark
 
 import (
 	"fmt"
+	"job-monitor/pkg/message"
 	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -26,7 +27,7 @@ func addKnowntype(scheme *runtime.Scheme) error {
 	return nil
 }
 
-func NewSparkApplicationInformer(clientset SparkApplicationV1Beta2Interface) (cache.Store, cache.Controller) {
+func NewSparkApplicationInformer(clientset SparkApplicationV1Beta2Interface, queue message.Queue) (cache.Store, cache.Controller) {
 	return cache.NewInformer(
 		&cache.ListWatch{
 			ListFunc: func(opts metav1.ListOptions) (runtime.Object, error) {
