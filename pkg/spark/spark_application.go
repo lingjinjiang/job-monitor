@@ -1,6 +1,8 @@
 package spark
 
 import (
+	"job-monitor/pkg/api"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 )
@@ -46,4 +48,8 @@ func (in *SparkApplicationList) DeepCopyObject() runtime.Object {
 		}
 	}
 	return &out
+}
+
+func (s *SparkApplication) Convert() api.Job {
+	return api.Job{}
 }

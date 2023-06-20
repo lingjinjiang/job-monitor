@@ -4,6 +4,7 @@ import "job-monitor/pkg/api"
 
 type Event struct {
 	Operation string
+	Job       api.Job
 }
 
 type Queue interface {

@@ -1,7 +1,6 @@
 package spark
 
 import (
-	"fmt"
 	"job-monitor/pkg/message"
 	"time"
 
@@ -28,6 +27,7 @@ func addKnowntype(scheme *runtime.Scheme) error {
 }
 
 func NewSparkApplicationInformer(clientset SparkApplicationV1Beta2Interface, queue message.Queue) (cache.Store, cache.Controller) {
+	handler := eventHandler{Queue: queue}
 	return cache.NewInformer(
 		&cache.ListWatch{
 			ListFunc: func(opts metav1.ListOptions) (runtime.Object, error) {
@@ -40,24 +40,9 @@ func NewSparkApplicationInformer(clientset SparkApplicationV1Beta2Interface, que
 		&SparkApplication{},
 		1*time.Minute,
 		cache.ResourceEventHandlerFuncs{
-			AddFunc:    addSparkApplication,
-			UpdateFunc: updateSparkApplication,
-			DeleteFunc: deleteSparkApplication,
+			AddFunc:    handler.addSparkApplication,
+			UpdateFunc: handler.updateSparkApplication,
+			DeleteFunc: handler.deleteSparkApplication,
 		},
 	)
-}
-
-func addSparkApplication(obj interface{}) {
-	app := obj.(*SparkApplication)
-	fmt.Println("add", app.Namespace, app.Name)
-}
-
-func updateSparkApplication(oldObj interface{}, newObj interface{}) {
-	app := newObj.(*SparkApplication)
-	fmt.Println("update", app.Namespace, app.Name)
-}
-
-func deleteSparkApplication(obj interface{}) {
-	app := obj.(*SparkApplication)
-	fmt.Println("delete", app.Namespace, app.Name)
 }
