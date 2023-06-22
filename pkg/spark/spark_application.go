@@ -15,13 +15,13 @@ type SparkApplicationSpec struct{}
 
 type SparkApplication struct {
 	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metatdata"`
-	Spec              SparkApplicationSpec `json:"spec"`
+	metav1.ObjectMeta `json:"metadata"`
+	Spec              interface{} `json:"spec"`
 }
 
 type SparkApplicationList struct {
 	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metatdata"`
+	metav1.ListMeta `json:"metadata"`
 	Items           []SparkApplication `json:"items"`
 }
 
@@ -51,5 +51,12 @@ func (in *SparkApplicationList) DeepCopyObject() runtime.Object {
 }
 
 func (s *SparkApplication) Convert() api.Job {
-	return api.Job{}
+	return api.Job{
+		Id:        string(s.GetUID()),
+		Name:      s.Name,
+		Namespace: s.Namespace,
+		Type:      "Spark",
+		Kind:      "SparkApplication",
+		Detail:    s,
+	}
 }

@@ -13,9 +13,6 @@ type Storage interface {
 }
 
 func NewStorage(mode string, queue message.Queue) Storage {
-	s := local.LoadFileStorage{Queue: queue}
-	message.Register("add", s.AddJob)
-	message.Register("update", s.UpdateJob)
-	message.Register("delete", s.DeleteJob)
-	return &s
+	s := local.NewLocalFileStorage(queue, "/tmp/data")
+	return s
 }

@@ -10,6 +10,7 @@ type Event struct {
 type Queue interface {
 	Push(Event) error
 	Pop() (Event, error)
+	Run()
 }
 
 type eventHandler func(api.Job) error
