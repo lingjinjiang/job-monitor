@@ -1,0 +1,70 @@
+<mxfile host="65bd71144e">
+    <diagram id="Wbwc8HqPOmynVe-8V6Fn" name="Page-1">
+        <mxGraphModel dx="1544" dy="909" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="13" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fontSize=22;fontColor=#000000;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="130" width="870" height="530" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=5.020000000000209;fillColor=none;strokeColor=#000000;rotation=-90;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="750" y="60.00000000000001" width="14.96" height="825.01" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Spark Job Informer" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontColor=#000000;fontSize=22;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="570" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Spark Job&amp;nbsp; Info" style="shape=flexArrow;endArrow=classic;html=1;fontSize=15;fontColor=#000000;strokeColor=#000000;labelBackgroundColor=none;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="499.5" y="560" as="sourcePoint"/>
+                        <mxPoint x="499.5" y="500" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="Storage" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontColor=#000000;fontSize=21;" vertex="1" parent="1">
+                    <mxGeometry x="910" y="560.02" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Common Job Detail" style="shape=flexArrow;endArrow=none;html=1;fontSize=15;fontColor=#000000;strokeColor=#000000;labelBackgroundColor=none;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;endFill=0;startArrow=block;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1009.5" y="550" as="sourcePoint"/>
+                        <mxPoint x="1009.5" y="490" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="Context" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontColor=#000000;fontSize=21;" vertex="1" parent="1">
+                    <mxGeometry x="657.48" y="300" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Common Job Summary" style="shape=flexArrow;endArrow=block;html=1;fontSize=15;fontColor=#000000;strokeColor=#000000;labelBackgroundColor=none;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;endFill=0;startArrow=none;startFill=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="756.98" y="450" as="sourcePoint"/>
+                        <mxPoint x="756.98" y="390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="Web Server" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontColor=#000000;fontSize=21;" vertex="1" parent="1">
+                    <mxGeometry x="657.48" y="150" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="shape=flexArrow;endArrow=block;html=1;fontSize=15;fontColor=#000000;strokeColor=#000000;labelBackgroundColor=none;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;endFill=0;startArrow=none;startFill=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="756.98" y="290" as="sourcePoint"/>
+                        <mxPoint x="756.98" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="K8s" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontColor=#000000;fontSize=22;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="740" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="shape=flexArrow;endArrow=classic;html=1;fontSize=15;fontColor=#000000;strokeColor=#000000;labelBackgroundColor=none;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="499.5" y="729.9999999999998" as="sourcePoint"/>
+                        <mxPoint x="499.5" y="669.9999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="FS" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontColor=#000000;fontSize=22;" vertex="1" parent="1">
+                    <mxGeometry x="910" y="740" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="shape=flexArrow;endArrow=none;html=1;fontSize=15;fontColor=#000000;strokeColor=#000000;labelBackgroundColor=none;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;startArrow=block;endFill=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1009.5" y="729.9999999999998" as="sourcePoint"/>
+                        <mxPoint x="1009.5" y="669.9999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
