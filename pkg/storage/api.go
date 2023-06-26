@@ -10,6 +10,7 @@ type Storage interface {
 	AddJob(api.Job) error
 	UpdateJob(api.Job) error
 	DeleteJob(api.Job) error
+	LoadJobs() []api.Job
 }
 
 func NewStorage(mode string, queue message.Queue) Storage {

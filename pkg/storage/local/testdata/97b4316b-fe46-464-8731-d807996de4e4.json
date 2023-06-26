@@ -1,0 +1,63 @@
+{
+	"id": "97b4316b-fe46-464-8731-d807996de4e4",
+	"name": "spark-pi",
+	"namespace": "default",
+	"type": "Spark",
+	"kind": "SparkApplication",
+	"status": "",
+	"detail": {
+		"kind": "SparkApplication",
+		"apiVersion": "sparkoperator.k8s.io/v1beta2",
+		"metadata": {
+			"name": "spark-pi",
+			"namespace": "default",
+			"uid": "97b4316b-fe46-464-8731-d807996de4e4",
+			"resourceVersion": "13985508",
+			"generation": 1,
+			"creationTimestamp": "2023-06-17706:50:40Z",
+			"spec": {
+				"arguments": [
+					"100000"
+				],
+				"driver": {
+					"coreLimit": "1200m",
+					"cores": 1,
+					"env": [{
+						"name": "SPARK LOCAL DIRS",
+						"value": "/opt/spark/work-dir"
+					}],
+					"labels": {
+						"version": "3.1.1"
+					},
+					"memory": "512m",
+					"serviceAccount": "spark",
+					"volumeMounts": [],
+					"executor": {
+						"cores": 1,
+						"env": [{
+							"name": "SPARK_LOCAL DIRS",
+							"value": "/opt/spark/work-dir"
+						}],
+						"instances": 1,
+						"labels": {
+							"version": "3.1.1"
+						},
+						"memory": "512m",
+						"volumeMounts": []
+					},
+					"image": "spark:3.1.1",
+					"imagePullPolicy": "IfNotPresent",
+					"mainApplicationFile": "local:///opt/spark/examples/jars/spark-example.jar",
+					"mainClass": "org.apache.spark,examples.SparkPi",
+					"mode": "cluster",
+					"restartPolicy": {
+						"type": "Never"
+					},
+					"sparkVersion": "3.1.1",
+					"type": "Scala",
+					"volumes": []
+				}
+			}
+		}
+	}
+}

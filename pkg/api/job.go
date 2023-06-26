@@ -1,11 +1,15 @@
 package api
 
+type Overview struct {
+	Id        string `json:"id"`
+	Name      string `json:"name"`
+	Namespace string `json:"namespace"`
+	Type      string `json:"type"`
+	Kind      string `json:"kind"`
+	Status    string `json:"status"`
+}
+
 type Job struct {
-	Id        string      `json:"id"`
-	Name      string      `json:"name"`
-	Namespace string      `json:"namespace"`
-	Type      string      `json:"type"`
-	Kind      string      `json:"kind"`
-	Status    string      `json:"status"`
-	Detail    interface{} `json:"detail"`
+	Overview
+	Detail interface{} `json:"detail"`
 }

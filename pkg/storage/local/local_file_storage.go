@@ -2,6 +2,8 @@ package local
 
 import (
 	"encoding/json"
+	"fmt"
+	"io/fs"
 	"job-monitor/pkg/api"
 	"job-monitor/pkg/message"
 	"log"
@@ -32,11 +34,7 @@ func NewLocalFileStorage(queue message.Queue, dataDir string) *localFileStorage 
 }
 
 func (s *localFileStorage) AddJob(job api.Job) error {
-	dir := filepath.Join(s.dataDir, job.Type, job.Kind, job.Id)
-	if err := os.MkdirAll(dir, os.ModeDir); err != nil {
-		log.Println(err)
-	}
-	metaFilePath := filepath.Join(dir, "meta.json")
+	metaFilePath := filepath.Join(s.dataDir, job.Id+".json")
 	data, _ := json.MarshalIndent(job, "", "  ")
 	metaFile, err := os.Create(metaFilePath)
 	if err != nil {
@@ -47,11 +45,7 @@ func (s *localFileStorage) AddJob(job api.Job) error {
 }
 
 func (s *localFileStorage) UpdateJob(job api.Job) error {
-	dir := filepath.Join(s.dataDir, job.Type, job.Kind, job.Id)
-	if err := os.MkdirAll(dir, os.ModeDir); err != nil {
-		log.Println(err)
-	}
-	metaFilePath := filepath.Join(dir, "meta.json")
+	metaFilePath := filepath.Join(s.dataDir, job.Id+".json")
 	data, _ := json.MarshalIndent(job, "", "  ")
 	metaFile, err := os.Create(metaFilePath)
 	if err != nil {
@@ -63,4 +57,40 @@ func (s *localFileStorage) UpdateJob(job api.Job) error {
 
 func (s *localFileStorage) DeleteJob(job api.Job) error {
 	return nil
+}
+
+func (s *localFileStorage) LoadJobs() []api.Job {
+	files, err := os.ReadDir(s.dataDir)
+	if err != nil {
+		log.Println("failed to load data from", s.dataDir, ":", err)
+		return nil
+	}
+	jobs := make([]api.Job, 0)
+	for _, file := range files {
+		job, err := s.loadJob(file)
+		if err != nil {
+			continue
+		}
+		jobs = append(jobs, job)
+	}
+	return jobs
+}
+
+func (s *localFileStorage) loadJob(file fs.DirEntry) (api.Job, error) {
+	filename := file.Name()
+	if file.IsDir() {
+		return api.Job{}, fmt.Errorf("skip directory: %s", filename)
+	}
+	content, err := os.ReadFile(filepath.Join(s.dataDir, filename))
+	if err != nil {
+		return api.Job{}, fmt.Errorf("failed to load %s: %s", filename, err)
+	}
+	var job api.Job
+	if err := json.Unmarshal(content, &job); err != nil {
+		return api.Job{}, fmt.Errorf("failed to parse %s: %s", filename, err)
+	}
+	if job.Id+".json" != filename {
+		return api.Job{}, fmt.Errorf("job's id is not equal with filename: %s", filename)
+	}
+	return job, nil
 }

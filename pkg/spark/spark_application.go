@@ -52,11 +52,13 @@ func (in *SparkApplicationList) DeepCopyObject() runtime.Object {
 
 func (s *SparkApplication) Convert() api.Job {
 	return api.Job{
-		Id:        string(s.GetUID()),
-		Name:      s.Name,
-		Namespace: s.Namespace,
-		Type:      "Spark",
-		Kind:      "SparkApplication",
-		Detail:    s,
+		Overview: api.Overview{
+			Id:        string(s.GetUID()),
+			Name:      s.Name,
+			Namespace: s.Namespace,
+			Type:      "Spark",
+			Kind:      "SparkApplication",
+		},
+		Detail: s,
 	}
 }
